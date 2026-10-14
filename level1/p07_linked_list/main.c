@@ -38,6 +38,14 @@ void pop_value(Node *head,int data) { //按值删除
         if (count==false)printf("未找到对应数据");
     }
 }
+void clear_Node(Node *head) {   //清除链表内存空间
+    Node *next=NULL;
+    while (head!=NULL) {
+        next=head->next;
+        free(head);
+        head=next;
+    }
+}
 Node *reverse(Node *head) {          //对链表进行逆序操作
     Node *next=NULL;
     Node *pre=NULL;
@@ -77,5 +85,6 @@ int main(){
     head=reverse(head);
     printf("%d\n",check(head,5,1));
     printf("%d\n",check(head,5,2));
+    clear_Node(head);
     return 0;
 }
